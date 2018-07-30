@@ -1,0 +1,12 @@
+diff --git a/rootfs/rootfs/etc/rc.d/cgroupfs-mount b/rootfs/rootfs/etc/rc.d/cgroupfs-mount
+index a1bd552..20f671b 100755
+--- a/rootfs/rootfs/etc/rc.d/cgroupfs-mount
++++ b/rootfs/rootfs/etc/rc.d/cgroupfs-mount
+@@ -58,4 +58,7 @@ done
+ #  freezer	7	3	1
+ #  blkio	8	3	1
+ 
++mkdir /sys/fs/cgroup/systemd
++mount -t cgroup -o none,name=systemd cgroup /sys/fs/cgroup/systemd
++
+ exit 0
