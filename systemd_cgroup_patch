@@ -1,9 +1,8 @@
 #!/bin/bash
-set -e
 mkdir -p debian/mamido-boot2docker/DEBIAN
 mkdir -p debian/mamido-boot2docker/usr/share/mamido-boot2docker
-#git apply systemd_cgroup_patch.diff
-#docker build -t boot2docker . && docker run --rm boot2docker > debian/mamido-boot2docker/usr/share/mamido-boot2docker/boot2docker.iso
+git apply systemd_cgroup_patch.diff
+docker build -t boot2docker . && docker run --rm boot2docker > debian/mamido-boot2docker/usr/share/mamido-boot2docker/boot2docker.iso
 cat debian/control | sed -e "s/ChangeMe/$(du debian/mamido-boot2docker/usr/share/mamido-boot2docker/boot2docker.iso | awk '{ print $1 }')/g" -e "s/ChangeVersion/$(cat VERSION)/g" > debian/mamido-boot2docker/DEBIAN/control
 echo "$(md5sum debian/mamido-boot2docker/usr/share/mamido-boot2docker/boot2docker.iso | awk '{ print $1 }')  usr/share/mamido-boot2docker/boot2docker.iso" > debian/mamido-boot2docker/DEBIAN/md5sums
 cd debian
