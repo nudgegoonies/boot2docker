@@ -1,0 +1,10 @@
+Package: mamido-boot2docker
+Version: ChangeVersion
+Architecture: amd64
+Maintainer: Andreas Wirooks <andreas.wirooks@1und1.de>
+Installed-Size: ChangeSize
+Section: unknown
+Priority: optional
+Homepage: https://git.mamdev.server.lan/tpq/boot2docker-mirror
+Description: mamido-boot2docker with systemd cgroup
+ mamido-boot2docker with systemd cgroup forked from original boot2docker
